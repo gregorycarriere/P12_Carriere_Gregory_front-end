@@ -1,0 +1,23 @@
+aside {
+	display: flex;
+	flex-direction: column;
+	width: 116px;
+	background-color: black;
+	align-items: center;
+	padding-top: 100px;
+	overflow: hidden;
+	position: relative;
+}
+
+.icon {
+	margin: 10px 26px;
+	cursor: pointer;
+}
+
+span {
+	color: white;
+	writing-mode: sideways-lr;
+	font-size: 12px;
+	line-height: 24px;
+	margin: 58px 0;
+}
