@@ -4,7 +4,7 @@ import {
 	createBrowserRouter,
 	// createRoutesFromElements,
 } from "react-router-dom";
-import Profil from "./pages/Profil/Profil";
+import Profil from "./Profil/Profil";
 import Root from "./Root";
 
 const router = createBrowserRouter([
