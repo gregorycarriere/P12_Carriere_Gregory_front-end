@@ -40,9 +40,33 @@ function Profil() {
 							info="Calories"
 						/>
 					</div>
-					<div className={styles.f}></div>
-					<div className={styles.g}></div>
-					<div className={styles.h}></div>
+					<div className={styles.f}>
+						<Aside
+							icon={protein_icon}
+							alt="Proteines icon"
+							quantity={main.keyData.proteinCount}
+							unity="g"
+							info="Proteines"
+						/>
+					</div>
+					<div className={styles.g}>
+						<Aside
+							icon={carbs_icon}
+							alt="Glucides icon"
+							quantity={main.keyData.carbohydrateCount}
+							unity="g"
+							info="Glucides"
+						/>
+					</div>
+					<div className={styles.h}>
+						<Aside
+							icon={fat_icon}
+							alt="Lipides icon"
+							quantity={main.keyData.lipidCount}
+							unity="g"
+							info="Lipides"
+						/>
+					</div>
 				</div>
 			</div>
 		</>
