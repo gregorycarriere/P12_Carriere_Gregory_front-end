@@ -1,20 +1,19 @@
 aside {
 	display: flex;
 	flex-direction: column;
-	width: 116px;
+	width: 89px;
 	background-color: black;
 	align-items: center;
 	padding-top: 100px;
-	overflow: hidden;
-	position: relative;
 }
 
 .icon {
-	margin: 10px 26px;
+	margin: 10px 20px;
 	cursor: pointer;
+	width: 54px;
 }
 
-span {
+.span {
 	color: white;
 	writing-mode: sideways-lr;
 	font-size: 12px;

@@ -1,9 +1,4 @@
-import {
-	// Route,
-	RouterProvider,
-	createBrowserRouter,
-	// createRoutesFromElements,
-} from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Profil from "./Profil/Profil";
 import Root from "./Root";
 

@@ -27,7 +27,7 @@ function Sidebar() {
 				alt="dumbbell icon"
 				className={styles.icon}
 			/>
-			<span>Copiryght, SportSee 2020</span>
+			<span className={styles.span}>Copiryght, SportSee 2020</span>
 		</aside>
 	);
 }
