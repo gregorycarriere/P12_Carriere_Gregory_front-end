@@ -1,8 +1,22 @@
 .container {
 	display: flex;
+	justify-content: space-around;
 }
 
 .info {
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	padding-left: 10px;
+}
+
+.title {
+	color: #282d30;
+	font-size: 17px;
+	font-weight: 700;
+}
+
+.p {
+	font-size: 14px;
+	color: #74798c;
 }
