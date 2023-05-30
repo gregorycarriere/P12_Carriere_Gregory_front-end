@@ -14,12 +14,14 @@ import fat_icon from "../img/fat-icon.svg";
 import protein_icon from "../img/protein-icon.svg";
 import RadarGraph from "../components/RadarGraph/RadarGraph";
 import ScoreChart from "../components/ScoreChart/ScoreChart";
+import SessionTime from "../components/SessionTime/SessionTime";
 
 function Profil() {
 	const params = useParams();
 
 	const main = USER_MAIN_DATA.find((el) => el.id == params.id);
 	const perf = USER_PERFORMANCE.find((el) => el.userId == params.id);
+	const sess = USER_AVERAGE_SESSIONS.find((el) => el.userId == params.id);
 
 	return (
 		<>
@@ -28,7 +30,9 @@ function Profil() {
 				<div className={styles.second_container}>
 					<div className={styles.a}>1</div>
 					<div className={styles.fourth_container}>
-						<div>2</div>
+						<div>
+							<SessionTime sess={sess} />
+						</div>
 						<div className={styles.radar}>
 							<RadarGraph perf={perf} />
 						</div>
