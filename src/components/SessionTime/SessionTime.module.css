@@ -1,3 +1,12 @@
 .label {
 	font-size: 13px;
 }
+
+.title {
+	position: absolute;
+	z-index: 100;
+	margin-top: 12px;
+	margin-left: 15px;
+	color: #ffffff8c;
+	font-size: 12px;
+}

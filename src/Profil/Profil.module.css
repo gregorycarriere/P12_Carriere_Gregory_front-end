@@ -1,3 +1,8 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+}
+
 .first_container {
 	display: flex;
 	margin-left: 20px;

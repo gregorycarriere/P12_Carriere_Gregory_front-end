@@ -2,11 +2,9 @@ import {
 	LineChart,
 	Line,
 	XAxis,
-	YAxis,
-	CartesianGrid,
 	Tooltip,
-	Legend,
 	ResponsiveContainer,
+	YAxis,
 } from "recharts";
 import styles from "./SessionTime.module.css";
 
@@ -59,32 +57,51 @@ function SessionTime({ sess }) {
 	};
 
 	return (
-		<ResponsiveContainer width="100%" height="100%">
-			<LineChart
-				data={sess.sessions}
-				style={{
-					background:
-						"linear-gradient(270deg, rgba(230,0,0,1) 25%, rgba(255,0,0,1) 25%)",
-				}}>
-				<XAxis dataKey="day" height={15} style={{ fontSize: "10px" }} />
-				<Line
-					type="monotone"
-					dataKey="sessionLength"
-					stroke="#fff"
-					strokeWidth={2}
-				/>
-				<Tooltip
-					content={<CustomTooltip />}
-					cursor={false}
-					wrapperStyle={{
-						width: "45px",
-						height: "15px",
-						background: "#FFFFFF",
-						borderRadius: "0",
-					}}
-				/>
-			</LineChart>
-		</ResponsiveContainer>
+		<>
+			<p className={styles.title}>
+				Durée moyennes des <br></br> sessions
+			</p>
+			<ResponsiveContainer width="100%" height="100%">
+				<LineChart
+					data={sess.sessions}
+					style={{
+						background:
+							"linear-gradient(270deg, rgba(230,0,0,1) 25%, rgba(255,0,0,1) 25%)",
+					}}>
+					<XAxis
+						dataKey="day"
+						axisLine={false}
+						tickLine={false}
+						height={25}
+						stroke="#FF8484"
+						style={{
+							fontSize: "13px",
+						}}
+					/>
+					<YAxis
+						hide={true}
+						domain={["dataMin - 10", "dataMax + 20"]}
+					/>
+					<Line
+						type="monotone"
+						dataKey="sessionLength"
+						dot={false}
+						stroke="#FFF"
+						strokeWidth={2}
+					/>
+					<Tooltip
+						content={<CustomTooltip />}
+						cursor={false}
+						wrapperStyle={{
+							width: "45px",
+							height: "15px",
+							background: "#FFFFFF",
+							borderRadius: "0",
+						}}
+					/>
+				</LineChart>
+			</ResponsiveContainer>
+		</>
 	);
 }
 

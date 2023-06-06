@@ -15,6 +15,7 @@ import protein_icon from "../img/protein-icon.svg";
 import RadarGraph from "../components/RadarGraph/RadarGraph";
 import ScoreChart from "../components/ScoreChart/ScoreChart";
 import SessionTime from "../components/SessionTime/SessionTime";
+import Switchuser from "../components/Switchuser/Switchuser";
 
 function Profil() {
 	const params = useParams();
@@ -25,7 +26,10 @@ function Profil() {
 
 	return (
 		<>
-			<Title name={main.userInfos.firstName} />
+			<div className={styles.header}>
+				<Title name={main.userInfos.firstName} />
+				<Switchuser user={params.id} />
+			</div>
 			<div className={styles.first_container}>
 				<div className={styles.second_container}>
 					<div className={styles.a}>1</div>
