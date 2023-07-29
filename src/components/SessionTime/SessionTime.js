@@ -9,7 +9,9 @@ import {
 import styles from "./SessionTime.module.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getData } from "../../data/getData";
+import { getData } from "../../service/getData";
+
+// Render a LineChart with user average sessions Data
 
 function SessionTime() {
 	const [data, setData] = useState([]);
@@ -25,6 +27,7 @@ function SessionTime() {
 	}, [id]);
 	if (data.length === 0) return null;
 
+	// format sessions.day
 	data.sessions.map(function (obj) {
 		switch (obj.day) {
 			case 1:
@@ -62,6 +65,7 @@ function SessionTime() {
 		return obj;
 	});
 
+	// create a customTooltip for linechart
 	const CustomTooltip = ({ active, payload }) => {
 		if (active && payload && payload.length) {
 			return (

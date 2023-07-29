@@ -12,7 +12,7 @@ import SessionTime from "../components/SessionTime/SessionTime";
 import Switchuser from "../components/Switchuser/Switchuser";
 import BarGraph from "../components/BarGraph/BarGraph";
 import { useEffect, useState } from "react";
-import { getData } from "../data/getData";
+import { getData } from "../service/getData";
 
 function Profil() {
 	const [data, setData] = useState([]);
@@ -47,7 +47,7 @@ function Profil() {
 							<RadarGraph />
 						</div>
 						<div className={styles.score}>
-							<ScoreChart />
+							<ScoreChart data={data} />
 						</div>
 					</div>
 				</div>

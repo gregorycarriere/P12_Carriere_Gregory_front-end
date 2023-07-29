@@ -14,6 +14,7 @@ import {
 // 	getUserPerformance,
 // } from "./DataMocked";
 
+// access to either mocked data or API data
 export const getData = (type, id) => {
 	let data = [];
 

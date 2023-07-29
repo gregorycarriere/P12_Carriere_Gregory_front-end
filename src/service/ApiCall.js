@@ -1,4 +1,4 @@
-// rajouter commentaire
+// Retrieve user infos
 export const getUserInfos = async (id) => {
 	try {
 		const res = await fetch(`http://localhost:3001/user/${id}`);
@@ -8,6 +8,7 @@ export const getUserInfos = async (id) => {
 	}
 };
 
+// Retrieve user activity
 export const getUserActivity = async (id) => {
 	try {
 		const res = await fetch(`http://localhost:3001/user/${id}/activity`);
@@ -17,6 +18,7 @@ export const getUserActivity = async (id) => {
 	}
 };
 
+// Retrieve user perfomance
 export const getUserPerformance = async (id) => {
 	try {
 		const res = await fetch(`http://localhost:3001/user/${id}/performance`);
@@ -26,6 +28,7 @@ export const getUserPerformance = async (id) => {
 	}
 };
 
+// Retrieve user average sessions
 export const getUserAverageSessions = async (id) => {
 	try {
 		const res = await fetch(

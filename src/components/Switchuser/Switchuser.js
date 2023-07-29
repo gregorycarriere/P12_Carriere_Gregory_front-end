@@ -2,6 +2,7 @@ import styles from "./Switchuser.module.css";
 import { Link } from "react-router-dom";
 import userIcon from "../../img/user-pen-solid.svg";
 
+// render switch user button
 function Switchuser({ user }) {
 	return (
 		<div className={styles.switch}>

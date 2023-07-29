@@ -11,7 +11,9 @@ import {
 import styles from "./BarGraph.module.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getData } from "../../data/getData";
+import { getData } from "../../service/getData";
+
+// Render a BarChart with user activity Data
 
 function BarGraph() {
 	const [data, setData] = useState([]);
@@ -27,10 +29,12 @@ function BarGraph() {
 	}, [id]);
 	if (data.length === 0) return null;
 
+	//format data.day
 	for (let i = 0; i < data.sessions.length; i++) {
 		data.sessions[i].day = i + 1;
 	}
 
+	// create a customTooltip for barChart
 	const CustomTooltip = ({ active, payload }) => {
 		if (active && payload && payload.length) {
 			return (

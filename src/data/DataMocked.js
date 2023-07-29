@@ -261,21 +261,24 @@ const USER_PERFORMANCE = [
 	},
 ];
 
+// Get user infos
 export function getUserInfos(id) {
 	const res = USER_MAIN_DATA.find((el) => el.id == id);
 	return { data: res };
 }
-
+// Get user activity
 export function getUserActivity(id) {
 	const res = USER_ACTIVITY.find((el) => el.userId == id);
 	return { data: res };
 }
 
+// Get user average session
 export function getUserAverageSessions(id) {
 	const res = USER_AVERAGE_SESSIONS.find((el) => el.userId == id);
 	return { data: res };
 }
 
+// Get user performance
 export function getUserPerformance(id) {
 	const res = USER_PERFORMANCE.find((el) => el.userId == id);
 	return { data: res };

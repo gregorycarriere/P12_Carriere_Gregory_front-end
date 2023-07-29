@@ -7,8 +7,9 @@ import {
 	PolarGrid,
 	PolarAngleAxis,
 } from "recharts";
-import { getData } from "../../data/getData";
+import { getData } from "../../service/getData";
 
+// Render a RadarChart with user performance data
 function RadarGraph() {
 	const [data, setData] = useState([]);
 	const { id } = useParams();
@@ -23,6 +24,7 @@ function RadarGraph() {
 	}, [id]);
 	if (data.length === 0) return null;
 
+	// format data.kind
 	data.data.map(function (obj) {
 		switch (obj.kind) {
 			case 1:

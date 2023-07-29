@@ -1,22 +1,8 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { ResponsiveContainer, PieChart, Pie, Cell, Label } from "recharts";
-import { getData } from "../../data/getData";
 
-function ScoreChart() {
-	const [data, setData] = useState([]);
-	const { id } = useParams();
-
-	useEffect(() => {
-		const data = async () => {
-			const request = await getData("USER_MAIN_DATA", id);
-			if (!request) return alert("data error : main infos");
-			setData(request.data);
-		};
-		data();
-	}, [id]);
-	if (data.length === 0) return null;
-
+// Create a PieChart with score value
+function ScoreChart({ data }) {
+	// create % stat
 	let perc = 0;
 	if (data.todayScore === undefined) {
 		perc = `${data.score}` * 100;
@@ -37,6 +23,7 @@ function ScoreChart() {
 
 	const COLORS = ["red", "transparent"];
 
+	// create a CustomLabel for pieChart
 	const CustomLabel = ({ viewBox, percent = 0 }) => {
 		const { cx, cy } = viewBox;
 		return (

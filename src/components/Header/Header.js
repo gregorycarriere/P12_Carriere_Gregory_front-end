@@ -2,6 +2,7 @@ import sportseeLogo from "../../img/logo.svg";
 import Navbar from "../Navbar/Navbar";
 import styles from "./Header.module.css";
 
+// render header box + navbar
 function Header() {
 	return (
 		<header>

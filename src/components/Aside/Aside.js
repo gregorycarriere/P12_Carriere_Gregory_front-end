@@ -1,5 +1,6 @@
 import styles from "./Aside.module.css";
 
+// render Aside cards
 function Aside(props) {
 	return (
 		<div className={styles.container}>

@@ -4,6 +4,7 @@ import swimmingIcon from "../../img/swimming_icon.svg";
 import bicyclingIcon from "../../img/bicycling_icon.svg";
 import dumbbellIcon from "../../img/dumbbell_icon.svg";
 
+// render sidebar + icons
 function Sidebar() {
 	return (
 		<aside>

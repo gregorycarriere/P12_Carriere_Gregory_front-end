@@ -1,5 +1,6 @@
 import styles from "./Title.module.css";
 
+// render title infos user
 function Title(props) {
 	return (
 		<div className={styles.container}>
