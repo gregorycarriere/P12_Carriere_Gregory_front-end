@@ -40,9 +40,9 @@
 }
 
 .a {
-	background-color: blue;
 	width: 700px;
 	height: 320px;
+	background: #fbfbfb;
 }
 
 .radar {
