@@ -1,3 +1,4 @@
+// rajouter commentaire
 export const getUserInfos = async (id) => {
 	try {
 		const res = await fetch(`http://localhost:3001/user/${id}`);
