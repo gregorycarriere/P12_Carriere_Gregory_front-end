@@ -14,6 +14,7 @@ import BarGraph from "../components/BarGraph/BarGraph";
 import { useEffect, useState } from "react";
 import { getData } from "../service/getData";
 
+// render profil page
 function Profil() {
 	const [data, setData] = useState([]);
 	const { id } = useParams();
