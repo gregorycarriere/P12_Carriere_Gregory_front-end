@@ -8,6 +8,7 @@ import {
 	PolarAngleAxis,
 } from "recharts";
 import { getData } from "../../service/getData";
+import ModelisationClass from "../../model/ModelisationClass";
 
 // Render a RadarChart with user performance data
 function RadarGraph() {
@@ -24,39 +25,8 @@ function RadarGraph() {
 	}, [id]);
 	if (data.length === 0) return null;
 
-	// format data.kind
-	data.data.map(function (obj) {
-		switch (obj.kind) {
-			case 1:
-				obj.kind = "Cardio";
-				break;
-
-			case 2:
-				obj.kind = "Energie";
-				break;
-
-			case 3:
-				obj.kind = "Endurance";
-				break;
-
-			case 4:
-				obj.kind = "Force";
-				break;
-
-			case 5:
-				obj.kind = "Vitesse";
-				break;
-
-			case 6:
-				obj.kind = "Intensité";
-				break;
-
-			default:
-				return obj.kind;
-		}
-
-		return obj;
-	});
+	// format data.kind for RadarChart
+	new ModelisationClass().FormatKind(data);
 
 	return (
 		<ResponsiveContainer width="100%" height="100%">

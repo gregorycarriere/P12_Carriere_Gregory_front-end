@@ -10,6 +10,7 @@ import styles from "./SessionTime.module.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getData } from "../../service/getData";
+import ModelisationClass from "../../model/ModelisationClass";
 
 // Render a LineChart with user average sessions Data
 
@@ -27,43 +28,8 @@ function SessionTime() {
 	}, [id]);
 	if (data.length === 0) return null;
 
-	// format sessions.day
-	data.sessions.map(function (obj) {
-		switch (obj.day) {
-			case 1:
-				obj.day = "L";
-				break;
-
-			case 2:
-				obj.day = "M";
-				break;
-
-			case 3:
-				obj.day = "M";
-				break;
-
-			case 4:
-				obj.day = "J";
-				break;
-
-			case 5:
-				obj.day = "V";
-				break;
-
-			case 6:
-				obj.day = "S";
-				break;
-
-			case 7:
-				obj.day = "D";
-				break;
-
-			default:
-				return obj.day;
-		}
-
-		return obj;
-	});
+	// format day for LineChart
+	new ModelisationClass().FormatDay(data);
 
 	// create a customTooltip for linechart
 	const CustomTooltip = ({ active, payload }) => {
