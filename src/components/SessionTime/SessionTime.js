@@ -7,10 +7,25 @@ import {
 	YAxis,
 } from "recharts";
 import styles from "./SessionTime.module.css";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getData } from "../../data/getData";
 
-function SessionTime({ sess }) {
-	sess.sessions.map(function (obj) {
-		// eslint-disable-next-line default-case
+function SessionTime() {
+	const [data, setData] = useState([]);
+	const { id } = useParams();
+
+	useEffect(() => {
+		const data = async () => {
+			const request = await getData("USER_AVERAGE_SESSIONS", id);
+			if (!request) return alert("data error : Session");
+			setData(request.data);
+		};
+		data();
+	}, [id]);
+	if (data.length === 0) return null;
+
+	data.sessions.map(function (obj) {
 		switch (obj.day) {
 			case 1:
 				obj.day = "L";
@@ -39,6 +54,9 @@ function SessionTime({ sess }) {
 			case 7:
 				obj.day = "D";
 				break;
+
+			default:
+				return obj.day;
 		}
 
 		return obj;
@@ -63,7 +81,7 @@ function SessionTime({ sess }) {
 			</p>
 			<ResponsiveContainer width="100%" height="100%">
 				<LineChart
-					data={sess.sessions}
+					data={data.sessions}
 					style={{
 						background:
 							"linear-gradient(270deg, rgba(230,0,0,1) 25%, rgba(255,0,0,1) 25%)",

@@ -1,15 +1,30 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { ResponsiveContainer, PieChart, Pie, Cell, Label } from "recharts";
-import Title from "../Title/Title";
+import { getData } from "../../data/getData";
 
-function ScoreChart({ score }) {
+function ScoreChart() {
+	const [data, setData] = useState([]);
+	const { id } = useParams();
+
+	useEffect(() => {
+		const data = async () => {
+			const request = await getData("USER_MAIN_DATA", id);
+			if (!request) return alert("data error : main infos");
+			setData(request.data);
+		};
+		data();
+	}, [id]);
+	if (data.length === 0) return null;
+
 	let perc = 0;
-	if (score.todayScore === undefined) {
-		perc = `${score.score}` * 100;
+	if (data.todayScore === undefined) {
+		perc = `${data.score}` * 100;
 	} else {
-		perc = `${score.todayScore}` * 100;
+		perc = `${data.todayScore}` * 100;
 	}
 
-	const data = [
+	const pourcent = [
 		{
 			name: "progress",
 			value: perc,
@@ -53,14 +68,14 @@ function ScoreChart({ score }) {
 		<ResponsiveContainer width="100%" height="100%">
 			<PieChart width="100%" height="100%" title="Score">
 				<Pie
-					data={data}
+					data={pourcent}
 					innerRadius={70}
 					outerRadius={80}
 					cornerRadius={40}
 					startAngle={90}
 					endAngle={450}
 					dataKey="value">
-					{data.map((entry, index) => (
+					{pourcent.map((entry, index) => (
 						<Cell
 							key={`cell-${index}`}
 							fill={COLORS[index % COLORS.length]}
@@ -69,7 +84,9 @@ function ScoreChart({ score }) {
 					<Label dy={-165} dx={-80} fill="#20253A" fontSize={"15px"}>
 						Score
 					</Label>
-					<Label content={<CustomLabel percent={data[0].value} />} />
+					<Label
+						content={<CustomLabel percent={pourcent[0].value} />}
+					/>
 				</Pie>
 			</PieChart>
 		</ResponsiveContainer>

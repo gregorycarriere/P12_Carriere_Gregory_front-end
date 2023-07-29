@@ -1,11 +1,5 @@
 import styles from "./Profil.module.css";
 import Title from "../components/Title/Title";
-import {
-	USER_MAIN_DATA,
-	USER_ACTIVITY,
-	USER_AVERAGE_SESSIONS,
-	USER_PERFORMANCE,
-} from "../data/data";
 import { useParams } from "react-router";
 import Aside from "../components/Aside/Aside";
 import calories_icon from "../img/calories-icon.svg";
@@ -16,32 +10,44 @@ import RadarGraph from "../components/RadarGraph/RadarGraph";
 import ScoreChart from "../components/ScoreChart/ScoreChart";
 import SessionTime from "../components/SessionTime/SessionTime";
 import Switchuser from "../components/Switchuser/Switchuser";
+import BarGraph from "../components/BarGraph/BarGraph";
+import { useEffect, useState } from "react";
+import { getData } from "../data/getData";
 
 function Profil() {
-	const params = useParams();
+	const [data, setData] = useState([]);
+	const { id } = useParams();
 
-	const main = USER_MAIN_DATA.find((el) => el.id == params.id);
-	const perf = USER_PERFORMANCE.find((el) => el.userId == params.id);
-	const sess = USER_AVERAGE_SESSIONS.find((el) => el.userId == params.id);
+	useEffect(() => {
+		const data = async () => {
+			const request = await getData("USER_MAIN_DATA", id);
+			if (!request) return alert("data error : main infos");
+			setData(request.data);
+		};
+		data();
+	}, [id]);
+	if (data.length === 0) return null;
 
 	return (
 		<>
 			<div className={styles.header}>
-				<Title name={main.userInfos.firstName} />
-				<Switchuser user={params.id} />
+				<Title name={data.userInfos.firstName} />
+				<Switchuser user={id} />
 			</div>
 			<div className={styles.first_container}>
 				<div className={styles.second_container}>
-					<div className={styles.a}>1</div>
+					<div className={styles.a}>
+						<BarGraph />
+					</div>
 					<div className={styles.fourth_container}>
 						<div>
-							<SessionTime sess={sess} />
+							<SessionTime />
 						</div>
 						<div className={styles.radar}>
-							<RadarGraph perf={perf} />
+							<RadarGraph />
 						</div>
 						<div className={styles.score}>
-							<ScoreChart score={main} />
+							<ScoreChart />
 						</div>
 					</div>
 				</div>
@@ -50,7 +56,7 @@ function Profil() {
 						<Aside
 							icon={calories_icon}
 							alt="calories icon"
-							quantity={main.keyData.calorieCount}
+							quantity={data.keyData.calorieCount}
 							unity="Kcal"
 							info="Calories"
 						/>
@@ -59,7 +65,7 @@ function Profil() {
 						<Aside
 							icon={protein_icon}
 							alt="Proteines icon"
-							quantity={main.keyData.proteinCount}
+							quantity={data.keyData.proteinCount}
 							unity="g"
 							info="Proteines"
 						/>
@@ -68,7 +74,7 @@ function Profil() {
 						<Aside
 							icon={carbs_icon}
 							alt="Glucides icon"
-							quantity={main.keyData.carbohydrateCount}
+							quantity={data.keyData.carbohydrateCount}
 							unity="g"
 							info="Glucides"
 						/>
@@ -77,7 +83,7 @@ function Profil() {
 						<Aside
 							icon={fat_icon}
 							alt="Lipides icon"
-							quantity={main.keyData.lipidCount}
+							quantity={data.keyData.lipidCount}
 							unity="g"
 							info="Lipides"
 						/>

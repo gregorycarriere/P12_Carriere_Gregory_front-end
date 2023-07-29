@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import {
 	ResponsiveContainer,
 	Radar,
@@ -5,10 +7,23 @@ import {
 	PolarGrid,
 	PolarAngleAxis,
 } from "recharts";
+import { getData } from "../../data/getData";
 
-function RadarGraph({ perf }) {
-	perf.data.map(function (obj) {
-		// eslint-disable-next-line default-case
+function RadarGraph() {
+	const [data, setData] = useState([]);
+	const { id } = useParams();
+
+	useEffect(() => {
+		const data = async () => {
+			const request = await getData("USER_PERFORMANCE", id);
+			if (!request) return alert("data error : Radar");
+			setData(request.data);
+		};
+		data();
+	}, [id]);
+	if (data.length === 0) return null;
+
+	data.data.map(function (obj) {
 		switch (obj.kind) {
 			case 1:
 				obj.kind = "Cardio";
@@ -33,6 +48,9 @@ function RadarGraph({ perf }) {
 			case 6:
 				obj.kind = "Intensité";
 				break;
+
+			default:
+				return obj.kind;
 		}
 
 		return obj;
@@ -40,7 +58,7 @@ function RadarGraph({ perf }) {
 
 	return (
 		<ResponsiveContainer width="100%" height="100%">
-			<RadarChart outerRadius="70%" data={perf.data}>
+			<RadarChart outerRadius="70%" data={data.data}>
 				<PolarGrid />
 				<PolarAngleAxis
 					stroke="white"
