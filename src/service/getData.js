@@ -1,5 +1,6 @@
 /* eslint-disable default-case */
 
+// comment or uncomment for type of import you want to use
 import {
 	getUserActivity,
 	getUserAverageSessions,
