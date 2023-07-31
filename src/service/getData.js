@@ -1,19 +1,19 @@
 /* eslint-disable default-case */
 
 // comment or uncomment for type of import you want to use
-import {
-	getUserActivity,
-	getUserAverageSessions,
-	getUserInfos,
-	getUserPerformance,
-} from "./ApiCall";
-
 // import {
 // 	getUserActivity,
 // 	getUserAverageSessions,
 // 	getUserInfos,
 // 	getUserPerformance,
-// } from "./DataMocked";
+// } from "./ApiCall";
+
+import {
+	getUserActivity,
+	getUserAverageSessions,
+	getUserInfos,
+	getUserPerformance,
+} from "../data/DataMocked";
 
 // access to either mocked data or API data
 export const getData = (type, id) => {
