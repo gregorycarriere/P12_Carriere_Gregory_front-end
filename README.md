@@ -26,3 +26,9 @@
 - Cloner le présent repo du _front-end_: `git clone https://github.com/gregorycarriere/P12_Carriere_Gregory_front-end`
 - En se plaçant dans ce repo du _front-end_, installer ses dépendances : `npm install`
 - Lancer le _front-end_ sur le port 3000 : `npm start`
+
+# N.B
+
+L'API SportSee contient des données pour seulement 2 utilisateurs (12 et 18). Vous pourrez passer de l'un à l'autre avec un bouton rouge à droite de la page utilisateur.
+
+Commenter ou dé-commenter le code de la ligne 4 à 16 du fichier "getData" dans le dossier "service" pour passer des données de l'API au données mockées.
