@@ -27,6 +27,9 @@
 - En se plaçant dans ce repo du _front-end_, installer ses dépendances : `npm install`
 - Lancer le _front-end_ sur le port 3000 : `npm start`
 
+### `Accéder à la page profil`
+- Une fois le projet lancer, cliquer sur "Profil" au niveau de la navbar pour accéder à la page profil.
+
 # N.B
 
 L'API SportSee contient des données pour seulement 2 utilisateurs (12 et 18). Vous pourrez passer de l'un à l'autre avec un bouton rouge à droite de la page utilisateur.
